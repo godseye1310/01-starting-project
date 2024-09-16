@@ -8,14 +8,14 @@ const counterReducer = (state = { counter: 0 }, action) => {
 	if (action.type === "decrement") {
 		return { counter: state.counter - 1 };
 	}
-	if (action.type === "INCREMENTBY5") {
+	if (action.type === "INCREMENTBY") {
 		return {
-			counter: state.counter + 5,
+			counter: state.counter + action.payload,
 		};
 	}
-	if (action.type === "DECREMENTBY5") {
+	if (action.type === "DECREMENTBY") {
 		return {
-			counter: state.counter - 5,
+			counter: state.counter - action.payload,
 		};
 	}
 

@@ -6,6 +6,11 @@ const Counter = () => {
 	const counter = useSelector((state) => state.counter);
 	const toggleCounterHandler = () => {};
 
+	//React Redux will automaticlly set-up a subscription to the Redus store for this component when use useSelector.
+	//component will automatically receive the lastest data whenever the data changes in the Redux store. Its Reactive.
+	//when the component gets unmounted the Redux will also automatically clear the subscription for this component.
+	//Redux manages all this behind the scenes.
+
 	//dispatch functions using useDispatch to manipulate state.
 	//this is a function which will dispatch an action against our Redux store
 	const dispatch = useDispatch();
@@ -18,12 +23,12 @@ const Counter = () => {
 		dispatch({ type: "decrement" });
 	};
 
-	const increment5Handler = () => {
-		dispatch({ type: "INCREMENTBY5" });
+	const increaseHandler = () => {
+		dispatch({ type: "INCREMENTBY", payload: 5 });
 	};
 
-	const decrement5Handler = () => {
-		dispatch({ type: "DECREMENTBY5" });
+	const decreseHandler = () => {
+		dispatch({ type: "DECREMENTBY", payload: 5 });
 	};
 
 	return (
@@ -35,8 +40,8 @@ const Counter = () => {
 				<button onClick={decrementHandler}>Decrement</button>
 			</div>
 			<div>
-				<button onClick={increment5Handler}>Increment by 5</button>
-				<button onClick={decrement5Handler}>Decrement by 5</button>
+				<button onClick={increaseHandler}>Increment by 5</button>
+				<button onClick={decreseHandler}>Decrement by 5</button>
 			</div>
 			<button onClick={toggleCounterHandler}>Toggle Counter</button>
 		</main>

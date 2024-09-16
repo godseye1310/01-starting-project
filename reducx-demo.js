@@ -1,6 +1,6 @@
 const redux = require("redux");
 
-const counterReducer = (state = { counter: 0 }, action) => {
+const counterReducer = (state = { counter: 0 }, action = {}) => {
 	if (action.type === "increment") {
 		return {
 			counter: state.counter + 1,
@@ -11,14 +11,14 @@ const counterReducer = (state = { counter: 0 }, action) => {
 			counter: state.counter - 1,
 		};
 	}
-	if (action.type === "INCREMENTBY2") {
+	if (action.type === "INCREMENTBY") {
 		return {
-			counter: state.counter + 2,
+			counter: state.counter + action.payload,
 		};
 	}
-	if (action.type === "DECREMENTBY2") {
+	if (action.type === "DECREMENTBY") {
 		return {
-			counter: state.counter - 2,
+			counter: state.counter - action.payload,
 		};
 	}
 	return state;
@@ -37,9 +37,7 @@ store.dispatch({ type: "increment" });
 store.dispatch({ type: "increment" });
 store.dispatch({ type: "increment" });
 store.dispatch({ type: "increment" });
-store.dispatch({ type: "increment" });
 store.dispatch({ type: "decrement" });
-store.dispatch({ type: "DECREMENTBY2" });
-store.dispatch({ type: "DECREMENTBY2" });
-store.dispatch({ type: "INCREMENTBY2" });
-store.dispatch({ type: "increment" });
+store.dispatch({ type: "INCREMENTBY", payload: 2 });
+store.dispatch({ type: "DECREMENTBY", payload: 2 });
+store.dispatch({ type: "INCREMENTBY", payload: 6 });
