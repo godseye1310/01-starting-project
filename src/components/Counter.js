@@ -5,8 +5,8 @@ import classes from "./Counter.module.css";
 
 const Counter = () => {
 	//select or get a state by useSelector()
-	const counter = useSelector((state) => state.counter);
-	const showCounter = useSelector((state) => state.showCounter);
+	const counter = useSelector((state) => state.counter.counter);
+	const showCounter = useSelector((state) => state.counter.showCounter);
 
 	//React Redux will automaticlly set-up a subscription to the Redus store for this component when use useSelector.
 	//component will automatically receive the lastest data whenever the data changes in the Redux store. Its Reactive.
