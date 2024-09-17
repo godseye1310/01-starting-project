@@ -4,7 +4,10 @@ import classes from "./Counter.module.css";
 const Counter = () => {
 	//select or get a state by useSelector()
 	const counter = useSelector((state) => state.counter);
-	const toggleCounterHandler = () => {};
+	const showCounter = useSelector((state) => state.showCounter);
+	const toggleCounterHandler = () => {
+		dispatch({ type: "toggle" });
+	};
 
 	//React Redux will automaticlly set-up a subscription to the Redus store for this component when use useSelector.
 	//component will automatically receive the lastest data whenever the data changes in the Redux store. Its Reactive.
@@ -34,7 +37,7 @@ const Counter = () => {
 	return (
 		<main className={classes.counter}>
 			<h1>Redux Counter</h1>
-			<div className={classes.value}>{counter}</div>
+			{showCounter && <div className={classes.value}>{counter}</div>}
 			<div>
 				<button onClick={incrementHandler}>Increment</button>
 				<button onClick={decrementHandler}>Decrement</button>
