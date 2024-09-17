@@ -1,13 +1,12 @@
 import { useSelector, useDispatch } from "react-redux";
+import { counterActions } from "../store/index";
+
 import classes from "./Counter.module.css";
 
 const Counter = () => {
 	//select or get a state by useSelector()
 	const counter = useSelector((state) => state.counter);
 	const showCounter = useSelector((state) => state.showCounter);
-	const toggleCounterHandler = () => {
-		dispatch({ type: "toggle" });
-	};
 
 	//React Redux will automaticlly set-up a subscription to the Redus store for this component when use useSelector.
 	//component will automatically receive the lastest data whenever the data changes in the Redux store. Its Reactive.
@@ -18,20 +17,30 @@ const Counter = () => {
 	//this is a function which will dispatch an action against our Redux store
 	const dispatch = useDispatch();
 
+	// Migrating to Redux Toolkit
 	const incrementHandler = () => {
-		dispatch({ type: "increment" });
+		dispatch(counterActions.increment());
+		// dispatch({ type: "increment" });
 	};
 
 	const decrementHandler = () => {
-		dispatch({ type: "decrement" });
+		dispatch(counterActions.decrement());
+		// dispatch({ type: "decrement" });
 	};
 
 	const increaseHandler = () => {
-		dispatch({ type: "INCREMENTBY", payload: 5 });
+		dispatch(counterActions.incrementBy(5));
+		// dispatch({ type: "INCREMENTBY", payload: 5 });
 	};
 
 	const decreseHandler = () => {
-		dispatch({ type: "DECREMENTBY", payload: 5 });
+		dispatch(counterActions.decrementBy(5));
+		// dispatch({ type: "DECREMENTBY", payload: 5 });
+	};
+
+	const toggleCounterHandler = () => {
+		dispatch(counterActions.toggleCounter());
+		// dispatch({ type: "toggle" });
 	};
 
 	return (
