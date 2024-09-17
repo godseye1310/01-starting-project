@@ -1,5 +1,5 @@
 // import { createStore } from "redux";
-import { configureStore, createSlice } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 
 //createSlice makes us prepare a slice of our global state.
 //When we have different pieces of state that are not directly related.
